@@ -87,6 +87,13 @@ def get_filters():
 
 def load_data(city, month, day, date_filter, period_filter):
 
+    """
+    Takes inputs from the get_filters function and loads a dataframe for the chosen city and filters.
+
+    Returns:
+        Dataframe from the underlying raw data for the chosen city, filtered by time period if applicable.
+    """
+
     df = pd.read_csv(CITY_DATA[city])
 
     # convert the Start Time column to datetime

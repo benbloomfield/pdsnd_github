@@ -136,9 +136,12 @@ def time_stats(df, period_filter):
     popular_day = df['day_of_week'].mode()[0]
     pop_d_count = df['day_of_week'].value_counts()[popular_day]
 
-    # Calculate the most popular hour
+    # Create additional dataframe column with start time converted into hour
 
     df['hour'] = df['Start Time'].dt.hour
+
+    # Calculate the most popular hour
+
     popular_hour = df['hour'].mode()[0]
     pop_h_count = df['hour'].value_counts()[popular_hour]
 

@@ -24,6 +24,24 @@ def get_filters():
         (str) day - name of the day of week to filter by, if date_filter is yes and period_filter is weekday
     """
 
+    # Sub-functions to receive and validate user input for month and day, returning validated input.
+
+    def month_check():
+        while True:
+            month = input('\nWhich month? Choose from January, February, March, April, May and June: ').lower()
+            if month in months:
+                break
+            print('Please provide a valid month name.')
+        return month
+
+    def day_check():
+        while True:
+            day = input('\nPlease select a day of the week by entering the name of the day: ').lower()
+            if day in days:
+                break
+            print('Please provide a valid day name.')
+        return day
+
     print('Hello! Let\'s explore some US bikeshare data! \n')
 
 # Retrieve city input. Test for validity and prompt again until a valid answer is given
@@ -50,31 +68,15 @@ def get_filters():
             print('Please enter month, weekday or both')
         # User picks month and day, determine which month and day, validate input.
         if period_filter == 'both':
-            while True:
-                month = input('\nWhich month? Choose from January, February, March, April, May and June: ').lower()
-                if month in months:
-                    break
-                print('Please provide a valid month name.')
-            while True:
-                day = input('\nPlease select a day of the week by entering the name of the day: ').lower()
-                if day in days:
-                    break
-                print('Please provide a valid day name.')
+            month = month_check()
+            day = day_check()
         # User picks month only, determine which month, validate input.
         elif period_filter == 'month':
-            while True:
-                month = input('\nWhich month? Choose from January, February, March, April, May and June: ').lower()
-                if month in months:
-                    break
-                print('Please provide a valid month name.')
+            month = month_check()
             day = 'all'
         # User picks day only, determine which day, validate input.
         elif period_filter == 'weekday':
-            while True:
-                day = input('\nPlease select a day of the week by entering the name of the day: ').lower()
-                if day in days:
-                    break
-                print('Please provide a valid day name.')
+            day = day_check()
             month = 'all'
     # No date filter is applied
     else:

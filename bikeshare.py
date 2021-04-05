@@ -245,8 +245,7 @@ def user_stats(df, city, period_filter):
 def main():
     while True:
         city, month, day, date_filter, period_filter = get_filters()
-
-        print('Your Filters:\nCity:', city.title(), '\nMonth:', month.title(), '\nWeekday:', day.title())
+        print('Your Filters:\nCity: {}\nMonth: {}\nWeekday: {}'.format(city, month, day).title())
         while True:
             data_restart = input('Is that correct? Enter yes or no: ')
             if data_restart in yes_no:
